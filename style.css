@@ -10,6 +10,15 @@ body {
     border: solid 1px black;
 }
 
+.display {
+    align-self: center;
+    justify-self: center;
+    text-align: right;
+    width: 450px;
+    height: 140px;
+    border: solid 1px black;
+}
+
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
