@@ -1,25 +1,129 @@
+html {
+    min-height: 100%;
+}
+
 body {
     display: flex;
-
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #FF6FB5;
 }
 
 .calculator {
+    align-self: center;
     display: grid;
-    width: 500px;
-    height: 700px;
-    border: solid 1px black;
+    grid-template: 
+    "screen"
+    "buttons";
+    margin: 0 auto;
+    width: 400px;
+    padding: 10px 10px 10px 10px;
+    background-color: #FFA1A1;
 }
 
 .screen {
+    grid-area: screen;
+    display: grid;
     align-self: center;
     justify-self: center;
+    justify-items: end;
     text-align: right;
-    width: 450px;
-    height: 140px;
-    border: solid 1px black;
+    width: 400px;
+    height: 80px;
+    background-color: #FFA1A1;
 }
 
 .buttons {
+    grid-area: buttons;
+    gap: 3px;
+    height: 500px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template: 
+        "clear back power divide"
+        "seven eight nine multiply"
+        "four five six subtract"
+        "one two three add"
+        "decimal zero equal add";
+}
+
+.btn {
+    background-color: #55D8C1;
+    border: none;
+}
+
+.operator {
+    background-color: #FCF69C;
+}
+
+/* Buttons grid */
+#number-0 {
+    grid-area: zero;
+}
+
+#number-1 {
+    grid-area: one;
+}
+
+#number-2 {
+    grid-area: two;
+}
+
+#number-3 {
+    grid-area: three;
+}
+
+#number-4 {
+    grid-area: four;
+}
+
+#number-5 {
+    grid-area: five;
+}
+
+#number-6 {
+    grid-area: six;
+}
+
+#number-7 {
+    grid-area: seven;
+}
+
+#number-8 {
+    grid-area: eight;
+}
+
+#number-9 {
+    grid-area: nine;
+}
+
+#add {
+    grid-area: add;
+}
+
+#subtract {
+    grid-area: subtract;
+}
+
+#multiply {
+    grid-area: multiply;
+}
+#divide {
+    grid-area: divide;
+}
+
+#power {
+    grid-area: power;
+}
+
+#back {
+    grid-area: back;
+}
+
+#equal {
+    grid-area: equal;
+}
+
+#decimal {
+    grid-area: decimal;
 }

@@ -8,32 +8,31 @@
 </head>
 <body>
     <div class="calculator">
-        <div class="screen">A</div>
+        <div class="screen">
+            <div id="lastOperation"></div>
+            <div id="input">0</div>
+        </div>
         <div class="buttons">
-            <button class="btn">Clear</button>
-            <button class="btn">Clear</button>
-            <button class="btn">Clear</button>
-            <button class="btn">Clear</button>
+            <button id="number-0" class="btn number">0</button>
+            <button id="number-1" class="btn number">1</button>
+            <button id="number-2" class="btn number">2</button>
+            <button id="number-3" class="btn number">3</button>
+            <button id="number-4" class="btn number">4</button>
+            <button id="number-5" class="btn number">5</button>
+            <button id="number-6" class="btn number">6</button>
+            <button id="number-7" class="btn number">7</button>
+            <button id="number-8" class="btn number">8</button>
+            <button id="number-9" class="btn number">9</button>
+            <button id="decimal" class="btn decimal">.</button>
 
-            <button class="btn">7</button>
-            <button class="btn">8</button>
-            <button class="btn">9</button>
-            <button class="btn">/</button>
-
-            <button class="btn">4</button>
-            <button class="btn">5</button>
-            <button class="btn">6</button>
-            <button class="btn">x</button>
-
-            <button class="btn">1</button>
-            <button class="btn">2</button>
-            <button class="btn">3</button>
-            <button class="btn">-</button>
-
-            <button class="btn">.</button>
-            <button class="btn">0</button>
-            <button class="btn">=</button>
-            <button class="btn">+</button>
+            <button id="clear" class="btn clear">Clear</button>
+            <button id="equal" class="btn operator">=</button>
+            <button id="add" class="btn operator">+</button>
+            <button id="subtract" class="btn operator">-</button>
+            <button id="multiply" class="btn operator">x</button>
+            <button id="divide" class="btn operator">/</button>
+            <button id="back" class="btn operator">Place</button>
+            <button id="power" class="btn operator">Place</button>            
         </div>
     </div>
 </body>
