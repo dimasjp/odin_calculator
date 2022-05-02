@@ -7,7 +7,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #FF6FB5;
+    background-color: #1A374D;
 }
 
 .calculator {
@@ -18,8 +18,10 @@ body {
     "buttons";
     margin: 0 auto;
     width: 400px;
-    padding: 10px 10px 10px 10px;
-    background-color: #FFA1A1;
+    padding: 10px 5px 20px 5px;
+    background-color: #406882;
+    border-radius: 10px;
+    border: 3px solid black;
 }
 
 .screen {
@@ -31,12 +33,13 @@ body {
     text-align: right;
     width: 400px;
     height: 80px;
-    background-color: #FFA1A1;
+    background-color: #406882;
+    font-size: 30px;
 }
 
 .buttons {
     grid-area: buttons;
-    gap: 3px;
+    gap: 5px;
     height: 500px;
     display: grid;
     grid-template: 
@@ -48,12 +51,17 @@ body {
 }
 
 .btn {
-    background-color: #55D8C1;
+    background-color: #6998AB;
     border: none;
+    font-size: 25px;
 }
 
 .operator {
-    background-color: #FCF69C;
+    background-color: #B1D0E0;
+}
+
+.clear {
+    background-color: #F66B0E;
 }
 
 /* Buttons grid */
