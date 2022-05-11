@@ -8,7 +8,7 @@ const inputScreen = document.querySelector('#input');
 let currentNum = '';
 let storedNum = '';
 let currentOperation = '';
-
+let evaluated = false;
 
 numberButton.forEach((button) =>
     button.addEventListener('click', () => logNumber(button.textContent))
@@ -22,6 +22,9 @@ clearButton.addEventListener('click', clear);
 equalButton.addEventListener('click', evaluate);
 
 function logNumber(number) {
+    if (evaluated) {
+        resetCalc();
+    }
     if (currentNum === '0') {
         currentNum = '';
     }
@@ -38,19 +41,32 @@ function updateScreen(input) {
 }
 
 function clear() {
+    if (!currentNum || currentNum === '0' || evaluated) {
+        resetCalc();
+    } else {
+        currentNum = '0';
+        updateScreen(currentNum);
+    }
+}
+
+function resetCalc() {
     currentNum = '0';
     storedNum = '';
     currentOperation = '';
+    evaluated = false;
     updateScreen(currentNum);
 }
 
 function setOperation(operator) {
-    if (currentOperation != '') evaluate();
+    if (evaluated) {
+        evaluated = false;
+        currentOperation = '';
+    }
     if (!storedNum) {
         storedNum = currentNum;
-        currentOperation = operator;
+        currentOperation = operator
         currentNum = '';
-    } else if (storedNum && !currentOperation) {
+    } else if (storedNum && !operator) {
         currentOperation = operator;
         updateScreen(storedNum);
         currentNum = '';
@@ -60,20 +76,16 @@ function setOperation(operator) {
         storedNum = operate(currentOperation, storedNum, currentNum);
         updateScreen(storedNum);
         currentNum = '';
-        currentOperation = operator
+        currentOperation = operator;
     }
 }
 
 function evaluate() {
-    if (currentOperation === '') return;
-    if (currentOperation === '/' && currentNum === '0') {
-        alert("Divide by 0!")
-        return
-    };
-    inputScreen.textContent = roundResult(
-        operate(currentOperation, storedNum, currentNum)
-    )
-    currentOperation = '';
+    if (currentNum, currentOperation, storedNum) {
+        storedNum = operate(currentOperation, storedNum, currentNum);
+        evaluated = true;
+        updateScreen(storedNum);
+    }
 }
 
 function roundResult(number) {
