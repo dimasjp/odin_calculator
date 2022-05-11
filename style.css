@@ -7,7 +7,11 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #1A374D;
+    background-color: #204051;
+    min-height: 95vh;
+    height: 100vh;
+    overflow: hidden;
+    font-family: monospace;
 }
 
 .calculator {
@@ -17,11 +21,9 @@ body {
     "screen"
     "buttons";
     margin: 0 auto;
-    width: 400px;
-    padding: 10px 5px 20px 5px;
-    background-color: #406882;
+    padding: 10px 0 10px 0;
+    background-color: #E7DFD5;
     border-radius: 10px;
-    border: 3px solid black;
 }
 
 .screen {
@@ -31,18 +33,21 @@ body {
     justify-self: center;
     justify-items: end;
     text-align: right;
-    width: 400px;
-    height: 80px;
-    background-color: #406882;
+    width: 401px;
+    height: 70px;
+    background-color: #E7DFD5;
     font-size: 30px;
+    overflow: hidden;
 }
 
 .buttons {
     grid-area: buttons;
-    gap: 5px;
     height: 500px;
     display: grid;
-    grid-template: 
+    gap: 1px;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(5, 100px);
+    grid-template-areas: 
         "clear back power divide"
         "seven eight nine multiply"
         "four five six subtract"
@@ -51,17 +56,19 @@ body {
 }
 
 .btn {
-    background-color: #6998AB;
+    background-color: #3B6978;
     border: none;
     font-size: 25px;
+    color: #F3F4ED;
+    font-family: monospace;
 }
 
 .operator {
-    background-color: #B1D0E0;
+    background-color: #3B6978;
 }
 
 .clear {
-    background-color: #F66B0E;
+    background-color: #FA7D09;
 }
 
 /* Buttons grid */
@@ -126,6 +133,7 @@ body {
 
 #back {
     grid-area: back;
+    background-color: #FA7D09;
 }
 
 #equal {
