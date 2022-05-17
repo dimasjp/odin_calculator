@@ -48,7 +48,7 @@ body {
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: repeat(5, 100px);
     grid-template-areas: 
-        "clear back power divide"
+        "clear back back divide"
         "seven eight nine multiply"
         "four five six subtract"
         "one two three add"

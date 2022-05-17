@@ -8,6 +8,7 @@ const operatorButton = document.querySelectorAll('.operator');
 const decimalButton = document.querySelector('#decimal');
 const equalButton = document.querySelector('#equal');
 const clearButton = document.querySelector('#clear');
+const backButton = document.querySelector('#back');
 const inputScreen = document.querySelector('#input');
 
 numberButton.forEach((button) =>
@@ -20,7 +21,8 @@ operatorButton.forEach((button) =>
 
 clearButton.addEventListener('click', clear);
 equalButton.addEventListener('click', calculate);
-decimalButton.addEventListener('click', addDecimal)
+decimalButton.addEventListener('click', addDecimal);
+backButton.addEventListener('click', backspace);
 
 function logNumber(number) {
     if (inputScreen.textContent === '0' || clearScreenFlag)
@@ -38,6 +40,10 @@ function clear() {
 function clearScreen() {
     inputScreen.textContent = '';
     clearScreenFlag = false;
+}
+
+function backspace() {
+    inputScreen.textContent = inputScreen.textContent.toString().slice(0, -1);
 }
 
 function addDecimal() {
