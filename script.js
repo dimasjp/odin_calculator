@@ -1,14 +1,14 @@
+let firstNum = '';
+let secondNum = '';
+let currentOperation = '';
+let clearScreenFlag = false;
+
 const numberButton = document.querySelectorAll('.number');
 const operatorButton = document.querySelectorAll('.operator');
-const equalButton = document.querySelector('#equal');
 const decimalButton = document.querySelector('#decimal');
+const equalButton = document.querySelector('#equal');
 const clearButton = document.querySelector('#clear');
 const inputScreen = document.querySelector('#input');
-
-let currentNum = '';
-let storedNum = '';
-let currentOperation = '';
-let evaluated = false;
 
 numberButton.forEach((button) =>
     button.addEventListener('click', () => logNumber(button.textContent))
@@ -19,73 +19,51 @@ operatorButton.forEach((button) =>
 )
 
 clearButton.addEventListener('click', clear);
-equalButton.addEventListener('click', evaluate);
+equalButton.addEventListener('click', calculate);
+decimalButton.addEventListener('click', addDecimal)
 
 function logNumber(number) {
-    if (evaluated) {
-        resetCalc();
-    }
-    if (currentNum === '0') {
-        currentNum = '';
-    }
-    currentNum += number;
-    updateScreen(currentNum);
-}
-
-function updateScreen(input) {
-    if (input === 'Infinity') {
-        inputScreen.textContent = "ERROR";
-    } else {
-        inputScreen.textContent = input;
-    }
+    if (inputScreen.textContent === '0' || clearScreenFlag)
+        clearScreen()
+    inputScreen.textContent += number
 }
 
 function clear() {
-    if (!currentNum || currentNum === '0' || evaluated) {
-        resetCalc();
-    } else {
-        currentNum = '0';
-        updateScreen(currentNum);
-    }
+    inputScreen.textContent = '0'
+    firstNum = '';
+    secondNum = '';
+    currentOperation = '';
 }
 
-function resetCalc() {
-    currentNum = '0';
-    storedNum = '';
-    currentOperation = '';
-    evaluated = false;
-    updateScreen(currentNum);
+function clearScreen() {
+    inputScreen.textContent = '';
+    clearScreenFlag = false;
+}
+
+function addDecimal() {
+    if (clearScreenFlag) clearScreen();
+    if (inputScreen.textContent === '')
+        inputScreen.textContent = '0';
+    if (inputScreen.textContent.includes('.')) return
+    inputScreen.textContent += '.'
 }
 
 function setOperation(operator) {
-    if (evaluated) {
-        evaluated = false;
-        currentOperation = '';
-    }
-    if (!storedNum) {
-        storedNum = currentNum;
-        currentOperation = operator
-        currentNum = '';
-    } else if (storedNum && !operator) {
-        currentOperation = operator;
-        updateScreen(storedNum);
-        currentNum = '';
-    } else if (!currentNum && currentOperation) {
-        currentOperation = operator;
-    } else {
-        storedNum = operate(currentOperation, storedNum, currentNum);
-        updateScreen(storedNum);
-        currentNum = '';
-        currentOperation = operator;
-    }
+    if (currentOperation !== '') calculate();
+    firstNum = inputScreen.textContent;
+    currentOperation = operator;
+    clearScreenFlag = true;
 }
 
-function evaluate() {
-    if (currentNum, currentOperation, storedNum) {
-        storedNum = operate(currentOperation, storedNum, currentNum);
-        evaluated = true;
-        updateScreen(storedNum);
+function calculate() {
+    if (currentOperation === '' || clearScreenFlag) return
+    if (currentOperation === '/' && inputScreen.textContent === '0') {
+        alert("Division by 0!")
+        return
     }
+    secondNum = inputScreen.textContent
+    inputScreen.textContent = roundResult(operate(currentOperation, firstNum, secondNum))
+    currentOperation = '';
 }
 
 function roundResult(number) {
@@ -126,3 +104,35 @@ function operate(operator, a, b) {
             return null
     }
 }
+
+// function setOperation(operator) {
+//     if (evaluated) {
+//         evaluated = false;
+//         currentOperation = '';
+//     }
+//     if (!storedOperand) {
+//         storedOperand = currentOperand;
+//         currentOperation = operator
+//         currentOperand = '';
+//     } else if (storedOperand && !operator) {
+//         currentOperation = operator;
+//         updateScreen(storedOperand);
+//         currentOperand = '';
+//     } else if (!currentOperand && currentOperation) {
+//         currentOperation = operator;
+//     } else {
+//         storedOperand = operate(currentOperation, storedOperand, currentOperand);
+//         updateScreen(storedOperand);
+//         currentOperand = '';
+//         currentOperation = operator;
+//     }
+// }
+
+// function evaluate() {
+//     if (currentOperand, currentOperation, storedOperand) {
+//         storedOperand = operate(currentOperation, storedOperand, currentOperand);
+//         evaluated = true;
+//         updateScreen(storedOperand);
+//     }
+// }
+
